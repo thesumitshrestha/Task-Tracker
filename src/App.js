@@ -21,14 +21,14 @@ function App() {
 
     //Fetch Tasks
     const fetchTasks = async () => {
-        const res = await fetch('http://localhost:5000/tasks')
+        const res = await fetch('https://tss-task-tracker.netlify.app/tasks')
         const data = await res.json()
         return data
     }
 
 
     const fetchTask = async (id) => {
-        const res = await fetch(`http://localhost:5000/tasks/${id}`)
+        const res = await fetch(`https://tss-task-tracker.netlify.app/tasks/${id}`)
         const data = await res.json()
         return data
     }
@@ -36,7 +36,7 @@ function App() {
 
     //Add Task
     const addTask = async (task) => {
-        const res = await fetch('http://localhost:5000/tasks/', {
+        const res = await fetch('https://tss-task-tracker.netlify.app/tasks/', {
             method: 'POST',
             headers: {
                 'Content-type': 'application/json'
@@ -55,7 +55,7 @@ function App() {
 
     //Delete Task
     const deleteTask = async (id) => {
-        await fetch(`http://localhost:5000/tasks/${id}`, {
+        await fetch(`https://tss-task-tracker.netlify.app/tasks/${id}`, {
             method: 'DELETE'
         });
 
@@ -67,7 +67,7 @@ function App() {
         const taskToToggle = await fetchTask(id)
         const updatedTask = {...taskToToggle, reminder: !taskToToggle.reminder}
 
-        const res = await fetch(`http://localhost:5000/tasks/${id}`, {
+        const res = await fetch(`https://tss-task-tracker.netlify.app/tasks/${id}`, {
             method: 'PUT',
             headers: {
                 'Content-type': 'application/json'
